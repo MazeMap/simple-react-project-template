@@ -1,4 +1,4 @@
-FROM node:10.9 as base
+FROM node:11.10 as base
 WORKDIR /mazemap/frontend/reactproject
 RUN yarn install
 

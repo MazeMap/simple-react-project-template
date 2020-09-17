@@ -1,0 +1,61 @@
+#!/bin/bash
+
+set -e
+
+SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+PROJECTROOT=$SCRIPTPATH
+DOCKERROOT=$SCRIPTPATH
+
+function build_target {
+    docker build -f "$SCRIPTPATH/Dockerfile" "$DOCKERROOT" -t "reactproject-$1" --target=$1
+}
+
+function copy_build_files_from_container {
+    REACTPROJECT_DIST_FILE="reactproject_build.tar"
+    OUTPUT="$PROJECTROOT/dist/$REACTPROJECT_DIST_FILE"
+    mkdir -p $PROJECTROOT/dist
+    docker run -d --rm --name reactproject-production reactproject-production sleep 30s
+    docker exec reactproject-production tar -cf "dist/$REACTPROJECT_DIST_FILE" -C dist/js .
+    docker cp "reactproject-production:/mazemap/frontend/reactproject/dist/$REACTPROJECT_DIST_FILE" $OUTPUT
+    docker kill reactproject-production # Kill it so we don't have to wait for it
+    echo "Build file copied to $OUTPUT"
+}
+
+function docker_run {
+    echo "Running command: $@"
+    build_target "development"
+    docker run \
+        -p 3000:3000 \
+        -v "$PROJECTROOT:/mazemap/frontend/reactproject" \
+        --rm \
+        --name reactproject-run \
+        -it \
+        reactproject-development \
+        "$@"
+}
+
+if [ -z $1 ]; then
+    echo "No input arguments given"
+    echo """Possible commands:
+    - docker start
+    - docker build
+    - docker run [command]
+    """
+    exit 1
+fi
+
+if [[ "$1" == *"start"* ]]; then
+    docker_run yarn start
+    exit 0
+fi
+
+if [[ "$1" == *"run"* ]]; then
+    shift 1
+    docker_run "$@"
+    exit 0
+fi
+
+if [[ "$@" == *"build"* ]]; then
+    build_target "production"
+    copy_build_files_from_container
+fi

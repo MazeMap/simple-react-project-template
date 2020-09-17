@@ -1,0 +1,34 @@
+Hello.
+This is a job interview task playbook :)
+
+
+Step 0)
+--------
+This task emulates a team delivery task, where someone has decided that we should make a demo of using the browser Web Speech API. Our designer has made a very simple UX sketch of the flow, and we want YOU to help bring this demo to life. Can you help us do it?
+You have a maximum of 55 minutes, and the time starts....now!
+Remember that we are here to help and collaborate whenever you need/want it.
+
+
+Step 1)
+--------
+Try to install/start this project, using the README file
+
+
+Step 2)
+--------
+We have a prototype of the finished demo product:
+
+- API Supported flow: https://xd.adobe.com/view/0716a63a-2b4e-4d0f-a15e-e66d91e878e3-5245/
+- API Not supported flow: https://xd.adobe.com/view/1f0eab99-1b40-48a4-afcc-3fc02d6a3c90-4a5d/
+
+
+Step 3)
+--------
+Skim through the Web Speech API real quick just to understand what it is.
+
+https://developers.google.com/web/updates/2013/01/Voice-Driven-Web-Apps-Introduction-to-the-Web-Speech-API
+
+
+Step 4)
+--------
+Develop as much as you can :)

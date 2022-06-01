@@ -2,15 +2,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # Available Scripts
 
-## Using Docker
-Using `Docker`:
-In the project directory, you can run:
-### `./docker start`
-
-Builds the docker file and then runs `yarn start` inside the container.
-See readme below about yarn commands
-
-
 ## Using `Yarn`:
 In the project directory, you can run:
 

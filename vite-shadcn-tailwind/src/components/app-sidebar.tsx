@@ -18,21 +18,6 @@ const items = [
     url: "#home",
     icon: Home,
   },
-  {
-    title: "Example: Zustand",
-    url: "#example-zustand",
-    icon: Inbox,
-  },
-  {
-    title: "Example: React Query",
-    url: "#example-react-query",
-    icon: Inbox,
-  },
-  {
-    title: "Example: Suspense Lazy",
-    url: "#example-suspense-lazy",
-    icon: Inbox,
-  },
 ]
 
 export function AppSidebar() {

@@ -8,10 +8,6 @@ node_modules/
 .env
 .env.*
 
-# Tailwind CSS generated files
-tailwind.config.js
-tailwind.css
-
 # Editor directories and files
 .idea/
 .vscode/
